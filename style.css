@@ -1,26 +1,53 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+body {
+    background-image: url('camo2.jpg');
+    background-size: cover;  /* Pour que l'image couvre toute la page */
+    background-repeat: no-repeat;
+    /*color: #d4d4d4;*/
+    font-family: 'Courier New', monospace;
+    text-align: center;
+    font-size: 30px;  
 }
 
-.Header{
-    background: red;
-    height: 30vh;
+h1 {
+    color: #051f01;
+    font-size: 36px;  /* Taille de police plus grande pour le titre */
 }
 
-.Main{
-    background: gray;
+.container {
+    margin-top: 50px;
 }
 
-.Left{
-    background: yellow;
+.button-container {
+    margin-top: 20px;
 }
 
-.Right{
-    background: green;
+.button {
+    display: inline-block;
+    padding: 20px 40px; 
+    font-size: 22px;  
+    color: white;
+    background-color: #4b5320;
+    border: none;
+    text-decoration: none;
+    margin: 10px;
+    border-radius: 5px;
 }
 
-.Footer{
-    background: blue;
+.button:hover {
+    background-color: #6b8e23;
+}
+
+.sensor-data {
+    margin-top: 20px;
+    font-size: 30px;  /* Augmente la taille des données affichées */
+    color: #ff6347;
+}
+
+/* Style pour le message "Do not contact us" */
+.footer-message {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 18px;  /* Taille du texte pour le message */
+    color: red;  /* Couleur rouge pour attirer l'attention */
 }

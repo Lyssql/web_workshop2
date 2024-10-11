@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distance Sensor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Distance to Target</h1>
+        <p>Measuring distance to the enemy : </p>
+        <div id="distanceData" class="sensor-data"></div>
+    </div>
+
+    <script>
+        function fetchDistance() {
+            fetch('/distance')  // Assuming the ESP-12F serves data from this route
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('distanceData').innerText = `Distance: ${data.distance} cm`;
+                });
+        }
+        setInterval(fetchDistance, 2000);  // Fetch new data every 2 seconds
+    </script>
+</body>
+</html>

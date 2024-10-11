@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature & Humidity Sensor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Environment Conditions</h1>
+        <p>Temperature and humidity data from the battlefield : </p>
+        <div id="tempHumidityData" class="sensor-data"></div>
+    </div>
+
+    <script>
+        function fetchTempHumidity() {
+            fetch('/temp_humidity')  // Assuming the ESP-12F serves data from this route
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('tempHumidityData').innerText = `Temperature: ${data.temperature} °C, Humidity: ${data.humidity}%`;
+                });
+        }
+        setInterval(fetchTempHumidity, 2000);  // Fetch new data every 2 seconds
+    </script>
+</body>
+</html>

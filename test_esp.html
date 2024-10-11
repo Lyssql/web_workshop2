@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ESP12F Sensor Dashboard</title>
+</head>
+<body>
+  <h1>ESP12F Sensor Data</h1>
+  <p>Temperature: <span id="temp"></span> °C</p>
+  <p>Humidity: <span id="humidity"></span> %</p>
+  <p>Distance: <span id="distance"></span> cm</p>
+
+  <script>
+    var socket = new WebSocket('ws://' + window.location.hostname + ':81/');
+    socket.onmessage = function(event) {
+      var data = JSON.parse(event.data);
+      document.getElementById('temp').innerText = data.temp;
+      document.getElementById('humidity').innerText = data.humidity;
+      document.getElementById('distance').innerText = data.distance;
+    };
+
+    function requestData() {
+      socket.send("get_data");
+    }
+
+    setInterval(requestData, 2000);  // Request data every 2 seconds
+  </script>
+</body>
+</html>
